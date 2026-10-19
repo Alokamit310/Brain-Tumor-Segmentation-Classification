@@ -156,3 +156,10 @@ The project is intended for learning and experimentation, not clinical diagnosis
 **BRAC University**
 
 </div>
+
+## Contributors
+
+- **Alok Sarker Amit** — [GitHub](https://github.com/Alokamit310)
+- **Sumaiya Akhter Moon** — [GitHub](https://github.com/moon0391)
+
+Developed collaboratively as a course project at BRAC University.
