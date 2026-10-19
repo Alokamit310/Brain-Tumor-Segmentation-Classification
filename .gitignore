@@ -1,0 +1,14 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+venv/
+.vscode/
+.env
+
+# Datasets and model checkpoints
+data/
+datasets/
+*.pt
+*.pth
+*.ckpt
+*.zip
