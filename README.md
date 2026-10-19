@@ -1,50 +1,103 @@
-# Brain Tumor Segmentation and Classification
+<div align="center">
 
-A CSE428: Image Processing course project at BRAC University, exploring deep learning for brain tumor segmentation and classification using the BRISC dataset.
+# Brain Tumor Segmentation & Classification
+
+### Exploring deep learning for medical image analysis
+
+**U-Net · Attention U-Net · Encoder-Based Classification**
+
+CSE428 — Image Processing | BRAC University
+
+</div>
+
+---
 
 ## Overview
 
-The project investigates two tasks:
+Locating a tumor and identifying its class are related but different image-analysis tasks. This project explores both using the **BRISC: Annotated Dataset for Brain Tumor Segmentation and Classification**.
 
-- Segmentation: identifying tumor regions in an image.
-- Classification: predicting the image's class label.
+The notebook follows the complete experimental workflow—from inspecting images and masks to training models, evaluating predictions, and visualizing results.
 
-The notebook implements U-Net and Attention U-Net for segmentation, along with an encoder-based classifier.
+| Task | Objective | Approach |
+|---|---|---|
+| **Segmentation** | Predict a pixel-level tumor mask | U-Net and Attention U-Net |
+| **Classification** | Predict the image's class label | Encoder-based classifier |
 
-## Workflow
+## Project Highlights
 
-1. Inspect dataset structure and class distribution.
-2. Pair images with segmentation masks.
-3. Preprocess images and prepare augmentation.
-4. Create training, validation, and test splits.
-5. Train segmentation models using a combined binary cross-entropy and Dice loss.
-6. Evaluate segmentation using Dice, IoU, and pixel accuracy.
-7. Train and evaluate an encoder-based classifier.
-8. Visualize predictions, training curves, and classification results.
+- Explore class distribution, image properties, and mask coverage.
+- Pair source images with their corresponding segmentation masks.
+- Prepare preprocessing, augmentation, and train/validation/test splits.
+- Implement and compare U-Net and Attention U-Net.
+- Train segmentation models with a combined binary cross-entropy and Dice loss.
+- Evaluate classification through per-class metrics and a confusion matrix.
+- Visualize training behaviour and predicted tumor masks.
 
-## Technologies
+## Methodology
 
-Python, PyTorch, torchvision, OpenCV, NumPy, pandas, matplotlib, and scikit-learn.
+### 1. Understand the Data
 
-## Dataset
+Inspect the dataset structure, class labels, image dimensions, and foreground-to-background distribution in segmentation masks.
 
-BRISC: Annotated Dataset for Brain Tumor Segmentation and Classification.
+### 2. Prepare the Inputs
 
-Dataset files are not included in this repository. Obtain the dataset from its original source and preserve the image, mask, and manifest structure expected by the notebook.
+Match images with masks, prepare data splits, and apply preprocessing and training-time augmentation.
 
-## Running the Notebook
+### 3. Train the Models
 
-The notebook was developed with Kaggle-style dataset paths.
+**U-Net** provides an encoder–decoder segmentation baseline with skip connections.
 
-### On Kaggle
+**Attention U-Net** introduces attention gates on skip connections to investigate their effect on segmentation performance.
 
-1. Upload the notebook.
+An **encoder-based classifier** addresses the separate image-classification task.
+
+### 4. Evaluate and Inspect
+
+Assess segmentation overlap, examine classification errors, and inspect visual predictions alongside numerical metrics.
+
+## Evaluation
+
+| Task | Metrics and Outputs |
+|---|---|
+| Segmentation | Dice coefficient, IoU, pixel accuracy |
+| Classification | Precision, recall, F1-score, confusion matrix |
+| Training analysis | Training and validation curves |
+| Qualitative analysis | Images, ground-truth masks, predicted masks |
+
+Saved notebook outputs record the original experiments. A fresh training run may produce different results because of random initialization, hardware, and library versions.
+
+## Technology Stack
+
+| Category | Tools |
+|---|---|
+| Language | Python |
+| Deep learning | PyTorch, torchvision |
+| Image processing | OpenCV, Pillow |
+| Data handling | NumPy, pandas |
+| Evaluation | scikit-learn |
+| Visualization | matplotlib |
+| Notebook environment | Jupyter / Kaggle |
+
+## Getting Started
+
+### Option A — Kaggle
+
+The notebook was developed using Kaggle-style dataset paths.
+
+1. Upload `cse-428-final-project.ipynb` to Kaggle.
 2. Attach the BRISC dataset.
 3. Enable a GPU for training.
-4. Update the dataset base path to match the attached dataset.
-5. Run the cells sequentially.
+4. Update the dataset base path to match its location.
+5. Run the notebook cells sequentially.
 
-### Locally
+### Option B — Local Environment
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Alokamit310/Brain-Tumor-Segmentation-Classification.git
+cd Brain-Tumor-Segmentation-Classification
+```
 
 Install dependencies:
 
@@ -52,25 +105,54 @@ Install dependencies:
 python -m pip install -r requirements.txt
 ```
 
-Open Jupyter:
+Launch Jupyter:
 
 ```bash
 jupyter notebook
 ```
 
-Open `cse-428-final-project.ipynb`, update the dataset paths, and run the cells sequentially.
+Open `cse-428-final-project.ipynb` and update its dataset paths before execution. GPU acceleration is recommended for training.
 
-Training cells generate model checkpoints. Evaluation cells that load checkpoints require those files to exist.
+### Dataset and Checkpoints
 
-## Evaluation
+The dataset and trained weights are not included in this repository.
 
-- Segmentation: Dice coefficient, intersection over union, and pixel accuracy.
-- Classification: precision, recall, F1-score, and confusion matrix.
+- Obtain BRISC from its original source.
+- Preserve the image, mask, and manifest structure expected by the notebook.
+- Update the notebook's paths to your dataset location.
+- Run the training cells to generate checkpoints before running evaluation cells that load them.
 
-Saved notebook outputs document the original experiment. Results from a fresh run may vary with the environment and training randomness.
+## Repository Contents
+
+| File | Purpose |
+|---|---|
+| `cse-428-final-project.ipynb` | Data exploration, model implementation, training, and evaluation |
+| `requirements.txt` | Python dependencies |
+| `.gitignore` | Excludes local datasets, checkpoints, and environment files |
+| `README.md` | Project overview and execution instructions |
+
+## Learning Focus
+
+The project examines practical questions in medical image analysis:
+
+- How do segmentation and classification require different evaluation methods?
+- How does an attention-based architecture compare with a standard U-Net?
+- What do overlap metrics reveal that pixel accuracy alone may miss?
+- Where do visual predictions expose errors hidden by aggregate scores?
 
 ## Scope and Limitations
 
-This project implements and evaluates established architectures for educational purposes. It is not a clinically validated diagnostic system.
+This is an academic implementation and evaluation of established architectures.
 
-Dataset files and trained model checkpoints are excluded from this repository.
+Results describe the dataset and experimental setup used in the notebook. They do not establish clinical reliability or generalization to other hospitals, scanners, or patient populations.
+
+The project is intended for learning and experimentation, not clinical diagnosis.
+
+---
+
+<div align="center">
+
+**Developed as part of CSE428 — Image Processing**  
+**BRAC University**
+
+</div>
